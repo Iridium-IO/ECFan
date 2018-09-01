@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <Global_Settings>
+    <RefreshInt>2000</RefreshInt>
+  </Global_Settings>
+
+	<P650RE>
+		<Offsets>
+			<CPU_Temp>0x07</CPU_Temp>
+			<CPU_Fan_Duty>0xCE</CPU_Fan_Duty>
+			<GPU_Fan_Duty>0xCF</GPU_Fan_Duty>
+			<CPU_Fan_RPM1>0xD0,0xD1</CPU_Fan_RPM1>			
+			<GPU_Fan_RPM1>0xD2,0xD3</GPU_Fan_RPM1>
+			<GPU_Fan_RPM2>0xD4,0xD5</GPU_Fan_RPM2>
+			<GPU_Fan_Target>0xE7</GPU_Fan_Target>
+		</Offsets>
+		<Functions>
+			<FanRPM>32768*60/[n]</FanRPM>
+			<TargetMaxRPM></TargetMaxRPM>
+			<TargetIdleRPM>-0.0016*(([n]+127)^3)+0.848*(([n]+127)^2)-116.6*([n]+127)+5960</TargetIdleRPM>
+
+		</Functions>
+	</P650RE>
+
+
+</config>
+

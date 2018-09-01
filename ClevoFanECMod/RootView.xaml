@@ -1,0 +1,21 @@
+﻿<Window
+    x:Class="RootView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ClevoFanECMod" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:s="https://github.com/canton7/Stylet" Title="Clevo Fan EC Mod"
+    Width="800" Height="450"
+    mc:Ignorable="d">
+    <StackPanel>
+        <ContentControl Height="19" s:View.Model="{Binding Toolbar, Mode=TwoWay, NotifyOnTargetUpdated=True}" />
+        <Grid Margin="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <GroupBox  MinHeight="100" MinWidth="200" Background="White" Padding="3">
+                <ContentControl s:View.Model="{Binding ActiveItem}" />
+            </GroupBox>
+            
+        </Grid>
+    </StackPanel>
+</Window>
