@@ -9,13 +9,20 @@
         <ContentControl Height="19" s:View.Model="{Binding Toolbar, Mode=TwoWay, NotifyOnTargetUpdated=True}" />
         <Grid Margin="6">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="500" />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <GroupBox  MinHeight="100" MinWidth="200" Background="White" Padding="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition MaxHeight="300" />
+            </Grid.RowDefinitions>
+            <GroupBox
+                Grid.Row="1" Grid.ColumnSpan="2"
+                Height="300" Padding="3"
+                Background="White">
                 <ContentControl s:View.Model="{Binding ActiveItem}" />
             </GroupBox>
-            
+
         </Grid>
     </StackPanel>
 </Window>

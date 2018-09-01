@@ -22,19 +22,22 @@ Public Class SensorEvent
     Sub MapDictionaryToConfig(targetConfig As String, ByRef dict As Dictionary(Of String, Integer))
 
         Dim WorkingConfigVal = XElementOffsets.Element(targetConfig).Value
+        If dict.Count > 0 Then
+            If WorkingConfigVal.Contains(",") Then
+                Dim offset1 = WorkingConfigVal.Split(",")(0)
+                Dim offset2 = WorkingConfigVal.Split(",")(1)
+                Dim dictVal1 = dict.Keys.Where(Function(x) x.Equals(offset1)).Single
+                Dim dictVal2 = dict.Keys.Where(Function(x) x.Equals(offset2)).Single
 
-        If WorkingConfigVal.Contains(",") Then
-            Dim offset1 = WorkingConfigVal.Split(",")(0)
-            Dim offset2 = WorkingConfigVal.Split(",")(1)
-            Dim dictVal1 = dict.Keys.Where(Function(x) x.Equals(offset1)).Single
-            Dim dictVal2 = dict.Keys.Where(Function(x) x.Equals(offset2)).Single
+                CallByName(Me, targetConfig, CallType.Set,
+                           String.Concat("&H", Hex(dict(dictVal1)), Hex(dict(dictVal2))))
+            Else
+                Dim dictionaryVal = dict.Keys.Where(Function(x) WorkingConfigVal.Equals(x)).Single
+                CallByName(Me, targetConfig, CallType.Set, dict(dictionaryVal))
 
-            CallByName(Me, targetConfig, CallType.Set,
-                       String.Concat("&H", Hex(dict(dictVal1)), Hex(dict(dictVal2))))
-        Else
-            Dim dictionaryVal = dict.Keys.Where(Function(x) WorkingConfigVal.Equals(x)).Single
-            CallByName(Me, targetConfig, CallType.Set, dict(dictionaryVal))
+            End If
         End If
+
 
     End Sub
 
