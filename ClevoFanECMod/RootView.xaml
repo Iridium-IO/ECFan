@@ -1,28 +1,50 @@
-﻿<Window
+﻿<controls:BlurryWindow
     x:Class="RootView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Acrylic="clr-namespace:AcrylicControls;assembly=AcrylicControls"
+    xmlns:controls="clr-namespace:BlurryControls.Controls;assembly=BlurryControls" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ClevoFanECMod" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:s="https://github.com/canton7/Stylet" Title="Clevo Fan EC Mod"
-    Width="800" Height="450"
+    Width="900" Height="600"
+    Background="#D4464646" Cursor="AppStarting" Strength="0.85"
+    IsMenuBarVisible="False" PreviewMouseMove="window_PreviewMouseMove"
     mc:Ignorable="d">
-    <StackPanel>
-        <ContentControl Height="19" s:View.Model="{Binding Toolbar, Mode=TwoWay, NotifyOnTargetUpdated=True}" />
-        <Grid Margin="6">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="500" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+    <Grid Margin="-1" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition />
+
+        </Grid.RowDefinitions>
+        <Acrylic:AcrylicMenuBar ShowOptions="Hidden" WindowTitle="Fan EC Mod" />
+      
+        <ContentControl
+            Grid.Row="1" Margin="1"
+            s:View.Model="{Binding Toolbar, Mode=TwoWay, NotifyOnTargetUpdated=True}" />
+        <Rectangle Grid.Row="2" Fill="#90151515" />
+        <Grid 
+            Grid.Row="2" Margin="20">
             <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
                 <RowDefinition Height="20" />
-                <RowDefinition MaxHeight="300" />
+                <RowDefinition Height="200" />
             </Grid.RowDefinitions>
-            <GroupBox
-                Grid.Row="1" Grid.ColumnSpan="2"
-                Height="300" Padding="3"
-                Background="White">
-                <ContentControl s:View.Model="{Binding ActiveItem}" />
-            </GroupBox>
+            
+            <ContentControl
+            Grid.Row="0" Margin="1" Grid.ColumnSpan="2"
+            s:View.Model="{Binding Working, Mode=TwoWay, NotifyOnTargetUpdated=True}" />
+            <ContentControl
+                Grid.Row="2" Grid.ColumnSpan="2"
+                Margin="8,8,0,8"
+                s:View.Model="{Binding Monitor}" />
+
 
         </Grid>
-    </StackPanel>
-</Window>
+        <ResizeGrip
+            x:Name="resizeGrip" Grid.Row="2"
+            Width="27" Height="30"
+            HorizontalAlignment="Right" VerticalAlignment="Bottom"
+            Panel.ZIndex="10" Cursor="SizeNWSE"
+            Focusable="True" Opacity="1"
+            PreviewMouseLeftButtonDown="resizeGrip_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="resizeGrip_PreviewMouseLeftButtonUp" />
+    </Grid>
+</controls:BlurryWindow>

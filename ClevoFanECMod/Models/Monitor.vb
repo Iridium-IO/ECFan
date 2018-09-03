@@ -1,7 +1,7 @@
-﻿Imports System.ComponentModel
+﻿Imports LiveCharts
+Imports LiveCharts.Wpf
 
 Namespace Models
-
 
     Public Class Monitor
         Property Device As String
@@ -18,14 +18,20 @@ Namespace Models
 
 
 
-
-
-
-
-
-
     End Class
 
+    Public Class Monitor_Single
+        Property Device As String
+        Property Value As String
+        Property LbBrush As Brush
+
+        Sub New(d_Name As String, d_Val As String, suffix As String, brush As Brush)
+            Device = d_Name
+            Value = If(d_Val <> "", d_Val & suffix, "")
+            LbBrush = brush
+        End Sub
+
+    End Class
 
     Public Class MeasureModel
         Property datetime As DateTime

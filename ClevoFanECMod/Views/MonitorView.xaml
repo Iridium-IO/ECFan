@@ -3,20 +3,72 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ClevoFanECMod" xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="https://github.com/canton7/Stylet"
-    d:DesignHeight="200" d:DesignWidth="700"
+    d:DesignHeight="222" d:DesignWidth="700"
     mc:Ignorable="d">
-    <Grid>
+    <Grid RenderOptions.ClearTypeHint="Enabled">
         <Grid.Resources>
             <Style x:Key="CleanSeparator" TargetType="lvc:Separator">
-                <Setter Property="IsEnabled" Value="False" />
+                <Setter Property="Stroke" Value="#39464c" />
+                <Setter Property="StrokeDashArray" Value="5" />
             </Style>
         </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
         <lvc:CartesianChart
-            Background="#282828" Foreground="White"
-            Hoverable="False" LegendLocation="Top"
-            Series="{Binding MainCollection}">
+            Background="Transparent" Foreground="White"
+            Hoverable="False" 
+            Series="{Binding RPMCollection}">
+            <!--<lvc:CartesianChart.ChartLegend>
+                <lvc:DefaultLegend
+                    BulletSize="10" FontSize="10"
+                    Foreground="#FFAAAAAA" />
+            </lvc:CartesianChart.ChartLegend>-->
+            <lvc:CartesianChart.DataTooltip>
+                <lvc:DefaultTooltip Background="#63000000" Foreground="White" />
+            </lvc:CartesianChart.DataTooltip>
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis
+                    LabelFormatter="{Binding DateTimeFormatter}"
+                    MaxValue="{Binding AxisMax}"
+                    MinValue="{Binding AxisMin}"
+                    Unit="{Binding AxisUnit}">
+                    <lvc:Axis.Separator>
+                        <lvc:Separator Step="{Binding AxisStep}" />
+                    </lvc:Axis.Separator>
+
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis
+                    Foreground="#FFAAAAAA" MaxValue="5000"
+                    MinValue="0">
+                    <lvc:Axis.Separator>
+                        <lvc:Separator Step="1250" Style="{StaticResource CleanSeparator}" />
+                    </lvc:Axis.Separator>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+        <TextBlock
+            Margin="40,0,0,0" HorizontalAlignment="Left"
+            VerticalAlignment="Top" Foreground="#FFAAAAAA"
+            RenderOptions.ClearTypeHint="Enabled">
+            Fan Speeds (RPM)
+        </TextBlock>
+        <lvc:CartesianChart
+            Grid.Row="1" Background="Transparent"
+            Foreground="White" Hoverable="False"
+            Series="{Binding TemperatureCollection}">
             <lvc:CartesianChart.ChartLegend>
-                <lvc:DefaultLegend Padding="0,10" />
+                <lvc:DefaultLegend
+                    BulletSize="10" FontSize="10"
+                    Foreground="#FFAAAAAA" />
             </lvc:CartesianChart.ChartLegend>
             <lvc:CartesianChart.DataTooltip>
                 <lvc:DefaultTooltip Background="#63000000" Foreground="White" />
@@ -30,38 +82,67 @@
                     <lvc:Axis.Separator>
                         <lvc:Separator Step="{Binding AxisStep}" />
                     </lvc:Axis.Separator>
-                 
+
                 </lvc:Axis>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis 
-                    Title="Temperature (°C)                              " Foreground="White"
-                    MaxValue="200" MinValue="0"
-                    Position="LeftBottom">
+                <lvc:Axis
+                    Foreground="#FFAAAAAA" MaxValue="100"
+                    MinValue="0">
                     <lvc:Axis.Separator>
                         <lvc:Separator Step="25" Style="{StaticResource CleanSeparator}" />
                     </lvc:Axis.Separator>
                 </lvc:Axis>
-                <lvc:Axis
-                    Title="                                    Fan Speed (RPM)" Foreground="White"
-                    MaxValue="5000" MinValue="-5000"
-                    Position="RightTop">
-                    <lvc:Axis.Separator>
-                        <lvc:Separator Step="1000" Style="{StaticResource CleanSeparator}" />
-                    </lvc:Axis.Separator>
-                </lvc:Axis>
-
             </lvc:CartesianChart.AxisY>
-
         </lvc:CartesianChart>
-        <Rectangle
-            Width="40" Height="90"
-            HorizontalAlignment="Right" VerticalAlignment="Bottom"
-            Fill="#282828" />
-        <Rectangle
-            Width="35" Height="90"
+        <TextBlock
+            Grid.Row="1" Margin="40,0,0,0"
             HorizontalAlignment="Left" VerticalAlignment="Top"
-            Fill="#282828" />
+            Foreground="#FFAAAAAA" RenderOptions.ClearTypeHint="Enabled">
+            Temperatures (°C)
+        </TextBlock>
+
+        <Grid Grid.RowSpan="2" Grid.Column="1">
+            <ListBox AlternationCount="2"
+                Margin="20,0,0,-40"
+                Background="{x:Null}"
+                ItemsSource="{Binding MonitorsCollection}" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="{x:Null}">
+                <ListBox.Resources>
+                    <Style  TargetType="{x:Type ListBoxItem}">
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Margin" Value="0,0,0,0"></Setter>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Margin" Value="0,0,0,35"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.Resources>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="65" />
+                                <ColumnDefinition Width="65" />
+                            </Grid.ColumnDefinitions>
+                            <Ellipse
+                                Grid.Column="0" Width="8"
+                                Height="8" StrokeThickness="2" 
+                                Stroke="{Binding LbBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <TextBlock Grid.Column="1" Text="{Binding Device}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="2" Text="{Binding Value}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+
     </Grid>
 
 

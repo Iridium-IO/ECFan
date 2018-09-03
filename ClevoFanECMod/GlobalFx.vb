@@ -4,6 +4,7 @@ Module GlobalFx
 
     Public eventAggregator As IEventAggregator = New EventAggregator
 
+    Public WithEvents BaseTimer As New Timers.Timer With {.Interval = 1000}
 
     ''' <summary>
     ''' Returns the GP Temperature as a formatted string.

@@ -2,23 +2,39 @@
     x:Class="Views.ToolbarView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ClevoFanECMod" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:s="https://github.com/canton7/Stylet" d:DesignHeight="20"
-    d:DesignWidth="800" mc:Ignorable="d">
+    xmlns:s="https://github.com/canton7/Stylet" d:DesignHeight="30"
+    d:DesignWidth="800" Background="Transparent"
+    mc:Ignorable="d">
+
     <StackPanel>
 
         <Menu
-            Width="Auto" Background="White"
-            Foreground="Black">
-            <MenuItem Header="_File">
-                <MenuItem Header="_Load..." />
-                <MenuItem Header="_Save" />
+            Width="Auto" Height="30"
+            Margin="8,0,0,0" Background="Transparent"
+            Foreground="White" RenderOptions.ClearTypeHint="Enabled">
+            <MenuItem
+                Width="50" Height="30"
+                BorderThickness="0" Foreground="White"
+                Header="_File"
+                Template="{DynamicResource DarkMenuItem}">
+                <MenuItem Header="_Load..." Template="{DynamicResource DarkMenuSubMenu}" />
+                <MenuItem Header="_Save" Template="{DynamicResource DarkMenuSubMenu}" />
                 <Separator />
-                <MenuItem Header="E_xit" />
+                <MenuItem
+                    Command="{s:Action Close}"
+                    Header="E_xit"
+                    Template="{DynamicResource DarkMenuSubMenu}" />
             </MenuItem>
-            <MenuItem Header="_View">
-                <MenuItem Header="Refresh (F5)" />
+            <MenuItem
+                Width="50" Foreground="White"
+                Header="_View"
+                Template="{DynamicResource DarkMenuItem}">
+                <MenuItem
+                    Command="{s:Action TogglePause}"
+                    Header="Pause Monitors" IsCheckable="True"
+                    Template="{DynamicResource DarkMenuSubMenu}" />
             </MenuItem>
         </Menu>
-        <Separator Height="1" Margin="0"/>
+        <Separator Height="1" Margin="0" />
     </StackPanel>
 </UserControl>

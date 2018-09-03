@@ -3,12 +3,14 @@ Imports ClevoFanECMod.ViewModels
 Imports org.mariuszgromada.math.mxparser
 Imports System.Text.RegularExpressions
 
+
 Partial Public Class RootViewModel : Inherits Conductor(Of Screen)
 
     Public Property Toolbar As New ToolbarViewModel
-    Public Property GPUMonitors As New MonitorViewModel(eventAggregator)
+    Public Property Monitor As New MonitorViewModel(eventAggregator)
+    Public Property Working As New WorkingViewModel
 
-    WithEvents BaseTimer As New Timers.Timer With {.Interval = 1000}
+
 
     Dim SettingsXML As XDocument = XDocument.Load("Settings.xml")
     Dim _SensorEvent As New SensorEvent(SettingsXML.<config>.<P650RE>.First)
@@ -17,18 +19,20 @@ Partial Public Class RootViewModel : Inherits Conductor(Of Screen)
 
 
     Sub New()
-        ActivateItem(GPUMonitors)
+
         BaseTimer.Start()
         Dim vxl = Regex.Replace(TargetIdleRPM, "\[n\]", "56")
+        ProcessArgs = RW_ProcessArgumentBuilder()
         Dim xm = New Expression(vxl)
+
+        AddHandler BaseTimer.Elapsed, AddressOf DoBaseTick
+
     End Sub
 
-
     Dim TargetIdleRPM = SettingsXML.<config>.<P650RE>.<Functions>.<TargetIdleRPM>.Value
-
-
     Dim RWOutputVals As New Dictionary(Of String, Integer)
-    Sub DoBaseTick() Handles BaseTimer.Elapsed
+
+    Sub DoBaseTick()
         _SensorEvent.GPU_Temp = GetGPUTemp()
         eventAggregator.Publish(_SensorEvent)
         ParseRWData()
@@ -48,16 +52,19 @@ Partial Public Class RootViewModel : Inherits Conductor(Of Screen)
             RWOutputVals.Add(key, val)
         Next
         _SensorEvent.Populate(RWOutputVals)
+
     End Sub
 
 
 
-    Dim WithEvents RWProc As Process
+    Dim RWProc As Process
+    Dim ProcessArgs As String
+
     Async Function RW_DataOut() As Task(Of String)
         RWProc = New Process
         With RWProc.StartInfo
             .FileName = RW
-            .Arguments = RW_ProcessArgumentBuilder()
+            .Arguments = ProcessArgs
             .UseShellExecute = False
             .CreateNoWindow = True
             .RedirectStandardInput = True
@@ -65,7 +72,7 @@ Partial Public Class RootViewModel : Inherits Conductor(Of Screen)
             .RedirectStandardError = True
         End With
         RWProc.Start()
-        RWProc.EnableRaisingEvents = True
+
         Dim t = Await RWProc.StandardOutput.ReadToEndAsync
         RWProc.Close()
         Return (t)

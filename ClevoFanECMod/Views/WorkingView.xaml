@@ -1,0 +1,109 @@
+﻿<UserControl
+    x:Class="Views.WorkingView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ClevoFanECMod" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    d:DesignHeight="300" d:DesignWidth="400"  xmlns:Blurry="clr-namespace:BlurryControls.Controls;assembly=BlurryControls"
+    mc:Ignorable="d">
+
+    <Grid RenderOptions.ClearTypeHint="Enabled">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="#DC777777">
+            <Border.Effect>
+                <DropShadowEffect Color="#FF232323" BlurRadius="5" Direction="-45" Opacity="0.6"/>
+            </Border.Effect>
+        </Border>
+        <Border Grid.Row="2" Background="#DC777777">
+            <Border.Effect>
+                <DropShadowEffect Color="#FF232323" BlurRadius="5" Direction="-45" Opacity="0.6"/>
+            </Border.Effect>
+        </Border>
+        <TextBlock
+            Margin="25,25,0,0" HorizontalAlignment="Left"
+            VerticalAlignment="Top" FontSize="14"
+            Foreground="White">
+            Current Targets
+        </TextBlock>
+        <Grid Grid.Row="2">
+            <TextBlock
+            Margin="25,25,0,0" HorizontalAlignment="Left"
+            VerticalAlignment="Top" FontSize="14"
+            Foreground="White">
+            New Targets
+            </TextBlock>
+            <TextBlock
+            Margin="61,62,0,0" HorizontalAlignment="Left"
+            VerticalAlignment="Top" FontSize="14"
+            Foreground="White">
+            Idle RPM:
+            </TextBlock>
+            <TextBlock
+            Margin="232,62,0,0" HorizontalAlignment="Left"
+            VerticalAlignment="Top" FontSize="14"
+            Foreground="White">
+            Max RPM:
+            </TextBlock>
+
+            <TextBox
+            Width="78" Height="23"
+            Margin="312,60,0,0" Padding="0"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            VerticalContentAlignment="Center" Background="#FF666666"
+            Foreground="White" SelectionBrush="#FF494949"
+            Text="{Binding New_Idle, Mode=TwoWay, FallbackValue='200 RPM'}"
+            TextWrapping="Wrap" />
+            <TextBox
+            Width="60" Height="23"
+            Margin="140,62,0,0" Padding="0"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            VerticalContentAlignment="Center" Background="#FFCECECE"
+            Foreground="#363636" SelectionBrush="#FF494949"
+            Text="{Binding New_Max, Mode=TwoWay}"
+            TextWrapping="Wrap" />
+            <Grid Margin="0,0,0,10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="300">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Foreground="White" Text="  0          16         32         48         64         80         96        112       128 " FontSize="10"></TextBlock>
+                <Slider Grid.Row="2" Grid.ColumnSpan="11"
+            AutoToolTipPlacement="BottomRight" LargeChange="8"
+            Maximum="128" SmallChange="2"
+            Style="{DynamicResource DarkSlider}"
+            TickFrequency="16" TickPlacement="TopLeft" Margin="1,0" />
+            </Grid>
+        </Grid>
+
+
+        <TextBlock
+            Margin="61,62,0,0" HorizontalAlignment="Left"
+            VerticalAlignment="Top" FontSize="14"
+            Foreground="White">
+            Idle RPM:
+        </TextBlock>
+        <TextBlock
+            Margin="138,62,0,0" HorizontalAlignment="Left"
+            VerticalAlignment="Top" FontSize="14"
+            Foreground="#A2CE8A"
+            Text="{Binding Current_Idle, FallbackValue='1200 RPM'}" />
+
+        <TextBlock
+            Margin="234,62,0,0" HorizontalAlignment="Left"
+            VerticalAlignment="Top" FontSize="14"
+            Foreground="White">
+            Max RPM:
+        </TextBlock>
+        <TextBlock
+            Margin="314,62,0,0" HorizontalAlignment="Left"
+            VerticalAlignment="Top" FontSize="14"
+            Foreground="#5AC1D9"
+            Text="{Binding Current_Max, FallbackValue='3750 RPM'}" />
+
+
+
+    </Grid>
+</UserControl>

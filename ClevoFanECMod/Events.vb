@@ -53,7 +53,7 @@ Public Class SensorEvent
         End Get
         Set(value)
             Dim xm = New Expression(Regex.Replace(XElementFunctions.<FanRPM>.Value, "\[n\]", Val(value).ToString))
-            _CPU_Fan_RPM1 = xm.calculate
+            _CPU_Fan_RPM1 = If(value <> "&H00", xm.calculate, 0)
         End Set
     End Property
     Private _GPU_Fan_RPM1 As Integer = -1
