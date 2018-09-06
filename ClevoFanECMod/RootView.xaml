@@ -5,10 +5,10 @@
     xmlns:local="clr-namespace:ClevoFanECMod" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:s="https://github.com/canton7/Stylet" Title="Clevo Fan EC Mod"
     Width="900" Height="600"
-    Background="#D4464646" Cursor="AppStarting" Strength="0.85"
+    Background="#D4464646" Cursor="AppStarting"
     IsMenuBarVisible="False" PreviewMouseMove="window_PreviewMouseMove"
-    mc:Ignorable="d">
-    <Grid Margin="-1" >
+    Strength="0.85" mc:Ignorable="d">
+    <Grid Margin="-1">
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
             <RowDefinition Height="30" />
@@ -16,27 +16,31 @@
 
         </Grid.RowDefinitions>
         <Acrylic:AcrylicMenuBar ShowOptions="Hidden" WindowTitle="Fan EC Mod" />
-      
+
         <ContentControl
             Grid.Row="1" Margin="1"
             s:View.Model="{Binding Toolbar, Mode=TwoWay, NotifyOnTargetUpdated=True}" />
         <Rectangle Grid.Row="2" Fill="#90151515" />
-        <Grid 
-            Grid.Row="2" Margin="20">
+        <Grid Grid.Row="2" Margin="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="20" />
                 <RowDefinition Height="200" />
             </Grid.RowDefinitions>
-            
-            <ContentControl
-            Grid.Row="0" Margin="1" Grid.ColumnSpan="2"
-            s:View.Model="{Binding Working, Mode=TwoWay, NotifyOnTargetUpdated=True}" />
-            <ContentControl
-                Grid.Row="2" Grid.ColumnSpan="2"
-                Margin="8,8,0,8"
-                s:View.Model="{Binding Monitor}" />
 
+            <ContentControl
+                Grid.Row="0" Grid.ColumnSpan="2"
+                Margin="1"
+                s:View.Model="{Binding Working, Mode=TwoWay, NotifyOnTargetUpdated=True}" />
+
+            
+            <Expander
+                Grid.Row="2" Grid.ColumnSpan="2"
+                Margin="0,8,0,8" Foreground="#FFE6E6E6"
+                Header="Monitors" IsExpanded="True"
+                Style="{DynamicResource RootExpanders}" Padding="0">
+                <ContentControl s:View.Model="{Binding Monitor}" />
+            </Expander>
 
         </Grid>
         <ResizeGrip

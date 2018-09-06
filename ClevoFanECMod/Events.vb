@@ -38,14 +38,13 @@ Public Class SensorEvent
             End If
         End If
 
-
     End Sub
 
     Public Property GPU_Temp = 0
     Public Property CPU_Temp = 0
     Public Property CPU_Fan_Duty = 0
     Public Property GPU_Fan_Duty = 0
-    Public Property GPU_Fan_Target = 0
+    Public Property GPU_Fan_Target = -1
     Private _CPU_Fan_RPM1 As Integer = -1
     Public Property CPU_Fan_RPM1
         Get

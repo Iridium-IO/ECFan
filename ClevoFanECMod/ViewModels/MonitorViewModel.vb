@@ -59,9 +59,7 @@ Namespace ViewModels
 
         Public Sub Handle(message As SensorEvent) Implements IHandle(Of SensorEvent).Handle
             Dim xact As New Action(Sub() DoRead(message))
-            Task.Run(xact)
-
-
+            Execute.PostToUIThreadAsync(xact)
         End Sub
 
         Private Sub DoRead(message As SensorEvent)

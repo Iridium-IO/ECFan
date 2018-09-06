@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="https://github.com/canton7/Stylet"
     d:DesignHeight="222" d:DesignWidth="700"
     mc:Ignorable="d">
-    <Grid RenderOptions.ClearTypeHint="Enabled">
+    <Grid RenderOptions.ClearTypeHint="Enabled" Margin="0,8,0,0">
         <Grid.Resources>
             <Style x:Key="CleanSeparator" TargetType="lvc:Separator">
                 <Setter Property="Stroke" Value="#39464c" />
@@ -104,7 +104,7 @@
 
         <Grid Grid.RowSpan="2" Grid.Column="1">
             <ListBox AlternationCount="2"
-                Margin="20,0,0,-40"
+                Margin="20,0,0,-30"
                 Background="{x:Null}"
                 ItemsSource="{Binding MonitorsCollection}" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="{x:Null}">
                 <ListBox.Resources>
@@ -114,14 +114,14 @@
                                 <Setter Property="Margin" Value="0,0,0,0"></Setter>
                             </Trigger>
                             <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                                <Setter Property="Margin" Value="0,0,0,35"></Setter>
+                                <Setter Property="Margin" Value="0,0,0,25"></Setter>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </ListBox.Resources>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid Height="20">
+                        <Grid Height="16">
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                             </Grid.RowDefinitions>

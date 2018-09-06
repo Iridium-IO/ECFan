@@ -16,9 +16,8 @@
 		</Offsets>
 		<Functions>
 			<FanRPM>32768*60/[n]</FanRPM>
-			<TargetMaxRPM></TargetMaxRPM>
+			<TargetMaxRPM>30*[n]+3660</TargetMaxRPM>
 			<TargetIdleRPM>-0.0016*(([n]+127)^3)+0.848*(([n]+127)^2)-116.6*([n]+127)+5960</TargetIdleRPM>
-
 		</Functions>
 	</P650RE>
 

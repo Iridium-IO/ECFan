@@ -12,9 +12,9 @@ Partial Public Class RootViewModel : Inherits Conductor(Of Screen)
 
 
 
-    Dim SettingsXML As XDocument = XDocument.Load("Settings.xml")
+
     Dim _SensorEvent As New SensorEvent(SettingsXML.<config>.<P650RE>.First)
-    Dim RW As String = My.Settings.RWEverythingPath
+
 
 
 
