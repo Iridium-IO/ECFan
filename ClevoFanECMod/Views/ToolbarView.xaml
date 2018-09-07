@@ -31,7 +31,7 @@
                 Template="{DynamicResource DarkMenuItem}">
                 <MenuItem
                     Command="{s:Action TogglePause}"
-                    Header="Pause Monitors" IsCheckable="True"
+                    Header="Pause/Unpause Monitors"
                     Template="{DynamicResource DarkMenuSubMenu}" />
             </MenuItem>
         </Menu>

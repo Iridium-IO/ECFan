@@ -5,7 +5,9 @@ Module GlobalFx
 
     Public eventAggregator As IEventAggregator = New EventAggregator
 
-    Public WithEvents BaseTimer As New Timers.Timer With {.Interval = 1000}
+    Public Property BaseTimer As New Timers.Timer With {.Interval = 1000}
+    Public IsMonitoringActive As Boolean = False
+
 
     Public SettingsXML As XDocument = XDocument.Load("Settings.xml")
 

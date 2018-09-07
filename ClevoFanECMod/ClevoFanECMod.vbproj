@@ -129,6 +129,7 @@
     <Compile Include="GlobalFx.vb" />
     <Compile Include="Events.vb" />
     <Compile Include="Models\Monitor.vb" />
+    <Compile Include="Models\Working.vb" />
     <Compile Include="RootView.xaml.vb">
       <DependentUpon>RootView.xaml</DependentUpon>
     </Compile>

@@ -439,7 +439,7 @@
             </Style>
             <SolidColorBrush x:Key="Expander.MouseOver.Circle.Stroke" Color="Transparent"/>
             <SolidColorBrush x:Key="Expander.MouseOver.Circle.Fill" Color="Transparent"/>
-            <SolidColorBrush x:Key="Expander.MouseOver.Arrow.Stroke" Color="#FFC2E1FA"/>
+            <SolidColorBrush x:Key="Expander.MouseOver.Arrow.Stroke" Color="#FFF4F4F4"/>
             <SolidColorBrush x:Key="Expander.Pressed.Circle.Stroke" Color="Transparent"/>
             <SolidColorBrush x:Key="Expander.Pressed.Circle.Fill" Color="Transparent"/>
             <SolidColorBrush x:Key="Expander.Pressed.Arrow.Stroke" Color="#FFCECECE"/>

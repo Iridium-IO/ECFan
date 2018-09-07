@@ -10,20 +10,14 @@ Partial Public Class RootViewModel : Inherits Conductor(Of Screen)
     Public Property Monitor As New MonitorViewModel(eventAggregator)
     Public Property Working As New WorkingViewModel
 
-
-
-
     Dim _SensorEvent As New SensorEvent(SettingsXML.<config>.<P650RE>.First)
-
-
 
 
     Sub New()
 
         BaseTimer.Start()
-        Dim vxl = Regex.Replace(TargetIdleRPM, "\[n\]", "56")
+
         ProcessArgs = RW_ProcessArgumentBuilder()
-        Dim xm = New Expression(vxl)
 
         AddHandler BaseTimer.Elapsed, AddressOf DoBaseTick
 
@@ -35,6 +29,7 @@ Partial Public Class RootViewModel : Inherits Conductor(Of Screen)
     Sub DoBaseTick()
         _SensorEvent.GPU_Temp = GetGPUTemp()
         eventAggregator.Publish(_SensorEvent)
+        IsMonitoringActive = True
         ParseRWData()
 
     End Sub
@@ -50,6 +45,7 @@ Partial Public Class RootViewModel : Inherits Conductor(Of Screen)
             Dim key = mx.Value.Split("=")(0).Trim()
             Dim val = VBHex(mx.Value.Split("=")(1).Trim())
             RWOutputVals.Add(key, val)
+            IsMonitoringActive = False
         Next
         _SensorEvent.Populate(RWOutputVals)
 

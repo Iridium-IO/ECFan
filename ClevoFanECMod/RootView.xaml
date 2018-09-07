@@ -5,7 +5,7 @@
     xmlns:local="clr-namespace:ClevoFanECMod" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:s="https://github.com/canton7/Stylet" Title="Clevo Fan EC Mod"
     Width="900" Height="600"
-    Background="#D4464646" Cursor="AppStarting"
+    Background="#D4464646" Cursor="Arrow"
     IsMenuBarVisible="False" PreviewMouseMove="window_PreviewMouseMove"
     Strength="0.85" mc:Ignorable="d">
     <Grid Margin="-1">
@@ -15,30 +15,35 @@
             <RowDefinition />
 
         </Grid.RowDefinitions>
-        <Acrylic:AcrylicMenuBar ShowOptions="Hidden" WindowTitle="Fan EC Mod" />
+        <Acrylic:AcrylicMenuBar
+            IsMaximisable="Collapsed" ShowOptions="Hidden"
+            WindowTitle="Fan EC Mod" />
 
         <ContentControl
             Grid.Row="1" Margin="1"
             s:View.Model="{Binding Toolbar, Mode=TwoWay, NotifyOnTargetUpdated=True}" />
         <Rectangle Grid.Row="2" Fill="#90151515" />
-        <Grid Grid.Row="2" Margin="20">
+        <Grid Grid.Row="2" Margin="20,10,20,20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="20" />
-                <RowDefinition Height="200" />
+                <RowDefinition Height="5" />
+                <RowDefinition MaxHeight="200" />
             </Grid.RowDefinitions>
-
-            <ContentControl
+            <Expander
                 Grid.Row="0" Grid.ColumnSpan="2"
-                Margin="1"
-                s:View.Model="{Binding Working, Mode=TwoWay, NotifyOnTargetUpdated=True}" />
+                Margin="0,8,0,8" Padding="0"
+                Foreground="#FFE6E6E6" Header="Configuration"
+                IsExpanded="True"
+                Style="{DynamicResource RootExpanders}">
+                <ContentControl Margin="0,10,0,0" s:View.Model="{Binding Working, Mode=TwoWay, NotifyOnTargetUpdated=True}" />
+            </Expander>
 
-            
             <Expander
                 Grid.Row="2" Grid.ColumnSpan="2"
-                Margin="0,8,0,8" Foreground="#FFE6E6E6"
-                Header="Monitors" IsExpanded="True"
-                Style="{DynamicResource RootExpanders}" Padding="0">
+                Margin="0,8,0,8" Padding="0"
+                Foreground="#FFE6E6E6" Header="Monitors"
+                IsExpanded="True"
+                Style="{DynamicResource RootExpanders}">
                 <ContentControl s:View.Model="{Binding Monitor}" />
             </Expander>
 
