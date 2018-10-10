@@ -1,0 +1,112 @@
+﻿<Window
+    x:Class="Views.InfoView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="clr-namespace:BlurryControls.Controls;assembly=BlurryControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:ECMod"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="https://github.com/canton7/Stylet"
+    Title="About" Width="400"
+    Height="500" WindowStyle="ToolWindow"
+    mc:Ignorable="d">
+    <Grid Background="#FF232323">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.8*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Image
+                Width="100" Height="100"
+                Margin="10,10,0,0" HorizontalAlignment="Left"
+                VerticalAlignment="Top" Source="/ECMod;component/ECFanLogo.ico" />
+            <TextBlock
+                Margin="130,20,0,0" HorizontalAlignment="Left"
+                VerticalAlignment="Top" FontSize="36"
+                Foreground="White">
+                EC Fan
+            </TextBlock>
+            <TextBlock
+                Margin="130,70,0,0" HorizontalAlignment="Left"
+                VerticalAlignment="Top" FontSize="20"
+                Foreground="#7C7C7C">
+                For Clevo P650RE
+            </TextBlock>
+            <TextBlock
+                Margin="18,130,0,0" HorizontalAlignment="Left"
+                VerticalAlignment="Top" FontSize="12"
+                Foreground="White" Text="{Binding Version, FallbackValue='Version 0.1'}">
+            </TextBlock>
+            <TextBlock
+                Margin="18,150,0,0" HorizontalAlignment="Left"
+                VerticalAlignment="Top" FontSize="12"
+                Foreground="#FF5396DA">
+                <Hyperlink
+                    Command="{s:Action RequestURI}"
+                    CommandParameter="https://www.github.com/ImminentFate/ECFan" Foreground="#FF5396DA">
+                    https://www.github.com/ImminentFate/ECFan
+                </Hyperlink>
+            </TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <TextBlock
+                Margin="18,10,0,0" HorizontalAlignment="Left"
+                VerticalAlignment="Top" FontSize="22"
+                Foreground="White">
+                Third-party licenses
+            </TextBlock>
+            <TextBlock
+                Margin="18,58,0,0" HorizontalAlignment="Left"
+                VerticalAlignment="Top" FontSize="12"
+                Foreground="White">
+                <Hyperlink
+                    Command="{s:Action RequestURI}"
+                    CommandParameter="https://github.com/Live-Charts/Live-Charts/blob/master/LICENSE.TXT" Foreground="#FF5396DA">
+                    LiveCharts
+                </Hyperlink>
+            </TextBlock>
+            <TextBlock
+                Margin="77,58,0,0" HorizontalAlignment="Left"
+                VerticalAlignment="Top" FontSize="12"
+                Foreground="#FF7C7C7C">
+                by Beto Rodriguez
+            </TextBlock>
+
+
+            <TextBlock
+                Margin="18,79,0,0" HorizontalAlignment="Left"
+                VerticalAlignment="Top" FontSize="12"
+                Foreground="White">
+                <Hyperlink
+                    Command="{s:Action RequestURI}"
+                    CommandParameter="https://github.com/mariuszgromada/MathParser.org-mXparser/blob/master/LICENSE.txt" Foreground="#FF5396DA">
+                    mXParser
+                </Hyperlink>
+            </TextBlock>
+            <TextBlock
+                Margin="73,79,0,0" HorizontalAlignment="Left"
+                VerticalAlignment="Top" FontSize="12"
+                Foreground="#FF7C7C7C">
+                by Mariusz Gromada
+            </TextBlock>
+
+
+            <TextBlock
+                Margin="18,100,0,0" HorizontalAlignment="Left"
+                VerticalAlignment="Top" FontSize="12"
+                Foreground="White">
+                <Hyperlink
+                    Command="{s:Action RequestURI}"
+                    CommandParameter="https://github.com/falahati/NvAPIWrapper/blob/master/LICENSE" Foreground="#FF5396DA">
+                    NvAPIWrapper
+                </Hyperlink>
+            </TextBlock>
+            <TextBlock
+                Margin="101,100,0,0" HorizontalAlignment="Left"
+                VerticalAlignment="Top" FontSize="12"
+                Foreground="#FF7C7C7C">
+                by Soroush Falahati
+            </TextBlock>
+
+
+        </Grid>
+
+    </Grid>
+</Window>

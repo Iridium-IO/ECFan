@@ -74,9 +74,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.ClevoFanECMod.MySettings
+        Friend ReadOnly Property Settings() As Global.ECMod.MySettings
             Get
-                Return Global.ClevoFanECMod.MySettings.Default
+                Return Global.ECMod.MySettings.Default
             End Get
         End Property
     End Module

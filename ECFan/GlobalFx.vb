@@ -9,9 +9,9 @@ Module GlobalFx
     Public IsMonitoringActive As Boolean = False
 
 
-    Public SettingsXML As XDocument = XDocument.Load("Settings.xml")
+    Public SettingsXML As XDocument
 
-    Public RW As String = My.Settings.RWEverythingPath
+    Public RW As String
 
 
     Function GetGPUTemp() As String

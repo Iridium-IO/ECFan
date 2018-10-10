@@ -120,7 +120,7 @@ Namespace ViewModels
         Async Sub SubmitNewFanOffset()
             Dim constructed_arg As String = String.Format("/stdout /nologo /Command=""WEC {0} {1}""", WriteableOffset, WriteableVal)
 
-            If MsgBox(String.Format("Are you sure you want to write {0} to the Embedded Controller at address {1}?", WriteableVal, WriteableOffset), MsgBoxStyle.YesNo, "Caution!") = MsgBoxResult.Yes Then
+            If MsgBox(String.Format("Are you sure you want to write {0} ({1}) to the Embedded Controller at address {2}?", Offset_Slider, WriteableVal, WriteableOffset), MsgBoxStyle.YesNo, "Caution!") = MsgBoxResult.Yes Then
 
                 While IsMonitoringActive = True
                     'Do Nothing

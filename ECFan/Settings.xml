@@ -2,6 +2,7 @@
 <config>
   <Global_Settings>
     <RefreshInt>2000</RefreshInt>
+    <RWEverythingPath></RWEverythingPath>
   </Global_Settings>
 
 	<P650RE>

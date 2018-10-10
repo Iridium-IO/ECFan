@@ -1,7 +1,7 @@
 ﻿Imports Stylet
 Imports LiveCharts
 Imports LiveCharts.Wpf
-Imports ClevoFanECMod.Models
+Imports ECMod.Models
 Imports LiveCharts.Configurations
 
 Namespace ViewModels
@@ -95,7 +95,7 @@ Namespace ViewModels
 
         Private Function RPMSmoother(val As Integer) As Double
             If val > 5000 OrElse val < -1 Then Return CPURPMSpeed.Values(CPURPMSpeed.Values.Count - 1).value
-            Return (val \ 100) * 100
+            Return (val \ 50) * 50
         End Function
 
 
@@ -121,9 +121,10 @@ Namespace ViewModels
         Public Function GradientMap(color1 As String, color2 As String) As GradientStopCollection
             Dim cl1 = HexToRGB(color1)
             Dim cl2 = HexToRGB(color2)
-            Dim g_Map As New GradientStopCollection
-            g_Map.Add(New GradientStop(cl1, 0))
-            g_Map.Add(New GradientStop(cl2, 1))
+            Dim g_Map As New GradientStopCollection From {
+                New GradientStop(cl1, 0),
+                New GradientStop(cl2, 1)
+            }
             Return g_Map
         End Function
 

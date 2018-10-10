@@ -11,11 +11,11 @@ Imports System.Windows
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("ClevoFanECMod")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("ClevoFanECMod")>
-<Assembly: AssemblyCopyright("Copyright ©  2018")>
+<Assembly: AssemblyTitle("EC Fan")>
+<Assembly: AssemblyDescription("EC Fan Mod for Clevo Notebooks")>
+<Assembly: AssemblyCompany("Fateful Productions")>
+<Assembly: AssemblyProduct("EC Fan")>
+<Assembly: AssemblyCopyright("Copyright ©  Fateful Productions 2018")>
 <Assembly: AssemblyTrademark("")>
 <Assembly: ComVisible(false)>
 
@@ -55,5 +55,5 @@ Imports System.Windows
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: AssemblyVersion("0.1")>
+<Assembly: AssemblyFileVersion("0.1")>
