@@ -1,4 +1,5 @@
-# ECFan
+<p align="left"><img src="Banner.svg" width="300"></p>
+
 EC Fan Offset Controller for Clevo Notebooks
 
 
