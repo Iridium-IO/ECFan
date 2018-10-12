@@ -108,13 +108,7 @@ Namespace ViewModels
 
             Return ((scale_upper - scale_lower) * (value - min)) / (max - min) + scale_lower
 
-
         End Function
-
-
-
-
-
 
 
         Async Sub SubmitNewFanOffset()

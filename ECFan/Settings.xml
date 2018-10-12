@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <config>
   <Global_Settings>
-    <RefreshInt>2000</RefreshInt>
+    <RefreshInt>1000</RefreshInt>
     <RWEverythingPath></RWEverythingPath>
   </Global_Settings>
 

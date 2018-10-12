@@ -7,15 +7,15 @@ Partial Public Class RootViewModel : Inherits Conductor(Of Screen)
     Public Property Toolbar As ToolbarViewModel
     Public Property Monitor As MonitorViewModel
     Public Property Working As WorkingViewModel
-
     Public Property SensorEvent As SensorEvent
 
     Public windowManager As IWindowManager
 
     Sub New(windowManager As IWindowManager)
+
         Me.windowManager = windowManager
         CheckSettings()
-
+        BaseTimer.Interval = SettingsXML.<config>.<Global_Settings>.<RefreshInt>.Value
         BaseTimer.Start()
         AddHandler BaseTimer.Elapsed, AddressOf DoBaseTick
 
@@ -95,7 +95,7 @@ Partial Public Class RootViewModel : Inherits Conductor(Of Screen)
                 <?xml version="1.0" encoding="utf-8"?>
                 <config>
                     <Global_Settings>
-                        <RefreshInt>2000</RefreshInt>
+                        <RefreshInt>1000</RefreshInt>
                         <RWEverythingPath></RWEverythingPath>
                     </Global_Settings>
                     <P650RE>
