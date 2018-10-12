@@ -3,7 +3,7 @@
 EC Fan Offset Controller for Clevo Notebooks
 
 
-Uses [RW Everything](http://rweverything.com/) to adjust the embedded controller flags to somewhat adjust the fan curve of Clevo/Sager/Metabox notebooks. 
+Uses [RW Everything](http://rweverything.com/) to adjust the embedded controller flags to modify the fan speed of Clevo/Sager/Metabox notebooks. 
 
 Currently only supports the P650RE, but if you're willing to find your own data then the offsets and calculations can be modified in Settings.xml (generated on first launch). 
 
